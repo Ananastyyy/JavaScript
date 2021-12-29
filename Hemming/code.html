@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Haming code</title>
+        <script>
+            function code(){
+               let message = document.getElementById('inputData').value;
+               let inputDigits = message.split('');
+               for (let i = 0; i<inputDigits.length; i++)
+                   inputDigits[i] = inputDigits[i]*1;
+               inputDigits.push((inputDigits[0] + inputDigits[2] + inputDigits[3])%2);
+               inputDigits.push((inputDigits[0] + inputDigits[1] + inputDigits[3])%2);
+               inputDigits.push((inputDigits[1] + inputDigits[2] + inputDigits[3])%2);
+               document.getElementById('codedData').value = inputDigits.join('');
+            }
+            function decode(){
+                let broken = document.getElementById('codedData').value;
+                let changeDigits = broken.split('');
+                let det = new Array();
+                for (let i=0; i<changeDigits.length; i++) {
+                    det[i] = 0;
+                }
+                for (let i = 0; i<changeDigits.length; i++) {
+                    changeDigits[i] = changeDigits[i] * 1;
+                }
+                if ((changeDigits[0]+changeDigits[1]+changeDigits[3])%2==changeDigits[5]){
+                    det[0]--;
+                    det[1]--;
+                    det[5]--;
+                    det[3]--;
+                }
+                else{
+                    det[0]++;
+                    det[1]++;
+                    det[5]++;
+                    det[3]++;
+                }
+                if ((changeDigits[1]+changeDigits[2]+changeDigits[3])%2==changeDigits[6]) {
+                    det[1]--;
+                    det[2]--;
+                    det[6]--;
+                    det[3]--;
+                }
+                else{
+                    det[1]++;
+                    det[2]++;
+                    det[6]++;
+                    det[3]++;
+                }
+                if ((changeDigits[0]+changeDigits[2]+changeDigits[3])%2==changeDigits[4]) {
+                    det[0]--;
+                    det[2]--;
+                    det[4]--;
+                    det[3]--;
+                }
+                else{
+                    det[0]++;
+                    det[2]++;
+                    det[4]++;
+                    det[3]++;
+                }
+                let s=0;
+                let fail=0;
+                for (let i=0; i<det.length; i++) {
+                    if (det[i] > fail) {
+                        fail = det[i];
+                        s = i;
+                    }
+                }
+                if (fail>0) {
+                    if (changeDigits[s] == 1)
+                        changeDigits[s]=0;
+                    else
+                        changeDigits[s]=1;
+                document.getElementById('еrr').value = 'in '+s+' position';
+                }
+                else
+                    document.getElementById('еrr').value = 'No';
+                document.getElementById('decodedData').value = changeDigits.join('');
+            }
+            function reset() {
+                document.getElementById("inputData").value = '';
+                document.getElementById("codedData").value = '';
+                document.getElementById("decodedData").value = '';
+                document.getElementById("еrr").value = '';
+            }
+        </script>
+    </head>
+    <body>
+        <p><input type="text" maxlength='4' placeholder="Write 4 symbol '0' or '1'" id="inputData"/> input data</p>
+        <p><input type="button" onclick ='code()' value="Code"/></p>
+        <p><input type="text" maxlength='8' id="codedData"/> coded data</p>
+        <p><input type="button" onclick ='decode()'value="Decode"/></p>
+        <p><input type="text" id="decodedData"/> decoded data</p>
+        <p><input type="text" id="еrr"/> error</p>
+        <p><input type="button" onclick='reset()'; value="Reset"/></p>
+    </body>
+</html>

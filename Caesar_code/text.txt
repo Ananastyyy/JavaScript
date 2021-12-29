@@ -1,0 +1,11 @@
+Coding can be addictive, and this means you need to know when to step away from the screen. Yes, working on lines of 
+code and bugs will help you learn faster, but there is such thing as burnout. You want to keep your mind fresh so you 
+can tackle new problems with confidence, so know when it’s time to call it a day.
+
+It’s easy to spiral into negativity if you’ve been struggling with a bug or error for a few hours. Let your mind refresh. 
+Turn off your computer and do something else. Go outside, take a walk, or even just scroll through your phone. Anything 
+that gives you mind a much-needed break.
+
+Programmers need thick skin. Things will go wrong. Sometimes, those things are out of your control. As a programmer, 
+you’re a problem solver. It’s okay if you need a break to clear your head for those problems, and it’s okay if you need 
+to walk away sometimes.
